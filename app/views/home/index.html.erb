@@ -4,6 +4,16 @@
     <p>Jump start your next Rails project with this MVP ready rails app.</p>
     <a href="https://github.com/TristanToye/rails-template" target="_blank" class="btn btn-outline-primary">Star on Github</a>
     <a href="https://github.com/TristanToye/rails-template#rails-template" target="_blank" class="btn btn-outline-secondary">Read the Docs</a>
+
+    <%= button_to 'Call Action', home_test_path, method: :get %>
+
+    <%= form_tag clubhouse_initialize_clubhouse_setup_path do |f| %>
+      <% @template_projects.each do |item| %>
+        <%= check_box_tag "template_projects[#{item['id']}]", item['name'] %>
+        <%= label_tag("project #{item['id']}", item['name']) %>
+      <% end %>
+    <%= submit_tag "Create Projects", class: 'btn btn-primary' %>
+  <% end %>
   </div>
 </div>
 <!--

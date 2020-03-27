@@ -3,7 +3,7 @@ module ProjectEpicsHelper
         all_epics = self.class.get('/epics', :body=> {:token => CLUBHOUSE_TEMPLATE_API_TOKEN})
 
         # puts('epic 0', all_epics.select { |epic| (epic['project_ids'] - project_ids_array).empty? })
-        
+
         # puts('filtered_epics', all_epics.select { |epic| (epic['project_ids'] - project_ids_array).empty? })
 
         filtered_epics = all_epics.select { |epic| (epic['project_ids'] - project_ids_array).empty? }

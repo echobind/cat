@@ -71,13 +71,13 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
 
   # EMAIL SMTP
-  config.action_mailer.smtp_settings = {
-    user_name: Rails.application.credentials.email[:user_name],
-    password: Rails.application.credentials.email[:password],
-    address: Rails.application.credentials.email[:host],
-    port: 587,
-    enable_starttls_auto: true,
-    format: :html,
-    from: 'mail@rails-template.heroku.com'
-  }
+  # config.action_mailer.smtp_settings = {
+  #   user_name: Rails.application.credentials.email[:user_name],
+  #   password: Rails.application.credentials.email[:password],
+  #   address: Rails.application.credentials.email[:host],
+  #   port: 587,
+  #   enable_starttls_auto: true,
+  #   format: :html,
+  #   from: 'mail@rails-template.heroku.com'
+  # }
 end
