@@ -9,53 +9,16 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <div class="container">
-        <a class="navbar-brand" href="/">Rails Template</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item mt-2">
-              <iframe src="https://ghbtns.com/github-btn.html?user=tristantoye&repo=rails-template&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
-            </li>
-
-          </ul>
-        </div>
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="https://github.com/TristanToye/rails-template" target="_blank">Docs</a>
-          </li>
-          <% if Flipper[:show_auth].enabled? %>
-            <% if user_signed_in? %>
-              <li class="nav-item">
-                <%= link_to 'Account', edit_user_registration_path, :class => 'nav-link' %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-link'  %>
-              </li>
-            <% else %>
-              <li class="nav-item">
-                <%= link_to "Sign up", new_user_registration_path, :class => 'nav-link'  %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "Login", new_user_session_path, :class => 'nav-link'  %>
-              </li>
-            <% end %>
-          <% end %>
-        </ul>
-      </div>
+  <% if user_signed_in? && !@hide_main_nav %> 
+    <nav class="nav flex-column sidebar-nav">
+      <a class="nav-link active" href="#">Active</a>
+      <a class="nav-link" href="#">Link</a>
+      <a class="nav-link" href="#">Link</a>
+      <a class="nav-link disabled" href="#">Disabled</a>
     </nav>
+  <% end %>
 
-    <main role="main" class="container mt-5">
-
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-
-      <%= yield %>
-    </main>
+  <body>
+    <%= yield %>
   </body>
 </html>
