@@ -2,6 +2,7 @@ require_relative 'boot'
 
 require 'rails/all'
 require 'flipper/middleware/memoizer'
+require "font-awesome-rails"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.

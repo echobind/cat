@@ -1,99 +1,46 @@
-<div class="row text-center mb-5">
-  <div class="col">
-    <h1><%= image_tag "rails-icon.jpg", size: '50x50' %> Rails Template</h1>
-    <p>Jump start your next Rails project with this MVP ready rails app.</p>
-    <a href="https://github.com/TristanToye/rails-template" target="_blank" class="btn btn-outline-primary">Star on Github</a>
-    <a href="https://github.com/TristanToye/rails-template#rails-template" target="_blank" class="btn btn-outline-secondary">Read the Docs</a>
-
-    <%= button_to 'Call Action', home_test_path, method: :get %>
-
-    <%= form_tag clubhouse_initialize_clubhouse_setup_path do |f| %>
-      <% @template_projects.each do |item| %>
-        <%= check_box_tag "template_projects[#{item['id']}]", item['name'] %>
-        <%= label_tag("project #{item['id']}", item['name']) %>
+<div class='page-login'>
+  <div class='home-container'>
+  <div class='logout-container'>
+  <%= link_to destroy_user_session_path, class: 'logout-button', method: :delete do %>
+      <%= fa_icon "sign-out 2x"%>
+    <% end %>
+  </div>
+    <div>
+      <h1>Clubhouse API Token</h1>
+      <% if !@current_user.clubhouse_api_token %>
+        <%= form_tag clubhouse_set_destination_workspace_api_key_path do |f| %>
+          <div class='form-group'>
+            <%= text_field_tag(:destination_workspace_api_key, 'Enter your API token', class: 'form-control') %>
+          </div>
+          <div class='form-group'>
+            <%= submit_tag "Add Token", class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      <% else %>
+        <p>You already have an API token set. If you'd like to add a new one please delete your current token.</p>
+        <%= form_tag clubhouse_delete_destination_workspace_api_key_path do |f| %>
+          <div class='form-group'>
+          <%= submit_tag "Delete Token", class: 'btn btn-primary' %>
+          </div>
+        <% end %>
       <% end %>
-    <%= submit_tag "Create Projects", class: 'btn btn-primary' %>
-  <% end %>
+    </div>
 
-  <%= link_to destroy_user_session_path, class: '', method: :delete do %>
-    <p>Jump start your next Rails project with this MVP ready rails app.</p>
-  <% end %>
+    <div>
+      <h1>Clubhouse Projects</h1>
+      <%= form_tag clubhouse_initialize_clubhouse_setup_path do |f| %>
+      <div class='row justify-content-center form-group'>
+        <% @template_projects.each do |item| %>
+          <div class='col-4'>
+          <%= check_box_tag "template_projects[#{item['id']}]", item['name'] %>
+          <%= label_tag("project #{item['id']}", item['name']) %>
+          </div>
+        <% end %>
+        </div>
+        <div class='form-group'>
+        <%= submit_tag "Initiallize Clubhouse", class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
-<!--
-<section>
-  <div class="row text-center">
-    <div class="col">
-      <h2>Features</h2>
-      <p>All the goodies you need right out of the box!</p>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="card-columns">
-      <div class="card">
-        <%= image_tag "rails-icon.jpg", class: "card-img-top" %>
-        <div class="card-body">
-          <h5 class="card-title">Card title that wraps to a new line</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-      </div>
-      <div class="card p-3">
-        <blockquote class="blockquote mb-0 card-body">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-          <footer class="blockquote-footer">
-            <small class="text-muted">
-              Someone famous in <cite title="Source Title">Source Title</cite>
-            </small>
-          </footer>
-        </blockquote>
-      </div>
-      <div class="card">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-      </div>
-      <div class="card bg-primary text-white text-center p-3">
-        <blockquote class="blockquote mb-0">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-          <footer class="blockquote-footer text-white">
-            <small>
-              Someone famous in <cite title="Source Title">Source Title</cite>
-            </small>
-          </footer>
-        </blockquote>
-      </div>
-      <div class="card text-center">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This card has a regular title and short paragraphy of text below it.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-      </div>
-      <div class="card">
-        <img src="..." class="card-img-top" alt="...">
-      </div>
-      <div class="card p-3 text-right">
-        <blockquote class="blockquote mb-0">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-          <footer class="blockquote-footer">
-            <small class="text-muted">
-              Someone famous in <cite title="Source Title">Source Title</cite>
-            </small>
-          </footer>
-        </blockquote>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is another card with title and supporting text below. This card has some additional content to make it slightly taller overall.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
--->
