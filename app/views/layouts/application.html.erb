@@ -4,19 +4,9 @@
     <title>Rails Template</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <% if user_signed_in? && !@hide_main_nav %> 
-    <nav class="nav flex-column sidebar-nav">
-      <a class="nav-link active" href="#">Active</a>
-      <a class="nav-link" href="#">Link</a>
-      <a class="nav-link" href="#">Link</a>
-      <a class="nav-link disabled" href="#">Disabled</a>
-    </nav>
-  <% end %>
 
   <body>
     <%= yield %>

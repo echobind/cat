@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'home/test'
   post 'clubhouse/initialize_clubhouse_setup'
+  post 'clubhouse/set_destination_workspace_api_key'
+  post 'clubhouse/delete_destination_workspace_api_key'
   devise_for :users
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'

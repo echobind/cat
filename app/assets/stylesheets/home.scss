@@ -30,3 +30,34 @@ body {
   display: block;
   min-height: 100vh;
 }
+
+.home-container {
+  border-width: 1px;
+  border-color: #797979;
+  background: white;
+  padding: 2rem;
+  width: 46rem;
+}
+
+.home-container h1 {
+  text-align: center;
+}
+
+.home-container .btn-primary {
+  width: 100%;
+  border-radius: 0;
+  background-color: #630555;
+  border-color: #630555;
+}
+
+.logout-container {
+  text-align: right;
+}
+
+.logout-button {
+  color: #797979;
+}
+
+.logout-button:hover {
+  color: #630555;
+}
