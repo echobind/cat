@@ -69,3 +69,5 @@ yarn-debug.log*
 
 # Ignore redis binary dump (dump.rdb) files
 *.rdb
+
+/config/master.key

@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user!
   include HTTParty
   include CustomUtilities
   base_uri 'https://api.clubhouse.io/api/v3'
