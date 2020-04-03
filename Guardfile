@@ -31,8 +31,8 @@
 # zeus: false                          # enables zeus gem.
 # CLI: 'rails server'                  # customizes runner command. Omits all options except `pid_file`!
 
-guard 'rails' do
-  watch('Gemfile.lock')
+guard "rails" do
+  watch("Gemfile.lock")
   watch(%r{^(config|lib)/.*})
 end
 
@@ -45,8 +45,8 @@ end
 #  * zeus: 'zeus rspec' (requires the server to be started separately)
 #  * 'just' rspec: 'rspec'
 
-guard :rspec, cmd: 'spring rspec' do
-  require 'guard/rspec/dsl'
+guard :rspec, cmd: "spring rspec" do
+  require "guard/rspec/dsl"
   dsl = Guard::RSpec::Dsl.new(self)
 
   # Feel free to open issues for suggestions and improvements
@@ -62,7 +62,7 @@ guard :rspec, cmd: 'spring rspec' do
   dsl.watch_spec_files_for(ruby.lib_files)
 
   # Rails files
-  rails = dsl.rails(view_extensions: ['erb', 'haml', 'slim'])
+  rails = dsl.rails(view_extensions: ["erb", "haml", "slim"])
   dsl.watch_spec_files_for(rails.app_files)
   dsl.watch_spec_files_for(rails.views)
 
@@ -86,11 +86,11 @@ guard :rspec, cmd: 'spring rspec' do
   # Turnip features and steps
   watch(%r{^spec/acceptance/(.+)\.feature$})
   watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$}) do |m|
-    Dir[File.join("**/#{m[1]}.feature")][0] || 'spec/acceptance'
+    Dir[File.join("**/#{m[1]}.feature")][0] || "spec/acceptance"
   end
 end
 
-guard 'livereload' do
+guard "livereload" do
   extensions = {
     css: :css,
     scss: :css,
@@ -105,7 +105,7 @@ guard 'livereload' do
     # less: :less, # uncomment if you want LESS stylesheets done in browser
   }
 
-  rails_view_exts = ['erb', 'haml', 'slim']
+  rails_view_exts = ["erb", "haml", "slim"]
 
   # file types LiveReload may optimize refresh for
   compiled_exts = extensions.values.uniq
@@ -129,16 +129,16 @@ guard 'livereload' do
   watch(%r{config/locales/.+\.yml})
 end
 
-guard 'spring', bundler: true do
-  watch('Gemfile.lock')
+guard "spring", bundler: true do
+  watch("Gemfile.lock")
   watch(%r{^config/})
   watch(%r{^spec/(support|factories)/})
   watch(%r{^spec/factory.rb})
 end
 
-guard 'brakeman', run_on_start: true do
+guard "brakeman", run_on_start: true do
   watch(%r{^app/.+\.(erb|haml|rhtml|rb)$})
   watch(%r{^config/.+\.rb$})
   watch(%r{^lib/.+\.rb$})
-  watch('Gemfile')
+  watch("Gemfile")
 end
