@@ -3,9 +3,9 @@ require: rubocop-rspec
 AllCops:
   UseCache: true
   Exclude:
-      - 'db/*'
-      - vendor/**/*
-      - node_modules/**/*
+    - 'db/*'
+    - vendor/**/*
+    - node_modules/**/*
 
 Layout/LineLength:
   Max: 80
@@ -18,8 +18,8 @@ Layout/LineLength:
     - https
   IgnoredPatterns: [(".*"), ('.*'), "(\\'.*\\')", '(\\".*\\")', "(\\A\\s*#.+)"]
   Exclude:
-  - 'db/migrate/*'
-  - 'db/seeds/*'
+    - 'db/migrate/*'
+    - 'db/seeds/*'
 
 Metrics/BlockLength:
   Enabled: true
@@ -34,6 +34,9 @@ Metrics/MethodLength:
 
 Style/Documentation:
   Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
 
 Style/FrozenStringLiteralComment:
   Enabled: false

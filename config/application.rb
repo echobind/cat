@@ -1,7 +1,7 @@
-require_relative 'boot'
+require_relative "boot"
 
-require 'rails/all'
-require 'flipper/middleware/memoizer'
+require "rails/all"
+require "flipper/middleware/memoizer"
 require "font-awesome-rails"
 
 # Require the gems listed in Gemfile, including any gems
@@ -12,7 +12,7 @@ module RailsTemplate
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
-    
+
     # https://gist.github.com/maxivak/381f1e964923f1d469c8d39da8e2522f
     config.autoload_paths << Rails.root.join("lib")
     config.eager_load_paths << Rails.root.join("lib")
@@ -22,7 +22,7 @@ module RailsTemplate
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    if Rails.env == 'production'
+    if Rails.env == "production"
       config.middleware.use Flipper::Middleware::Memoizer, preload_all: true
     end
   end
