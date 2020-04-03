@@ -26,10 +26,10 @@ class InitializeClubhouseWorker < BaseClubhouseWorker
 
         create_destination_epics_batch = Sidekiq::Batch.new
         create_destination_epics_batch.on(
-            :success, "#{self.class}#step_3_final"
+            :success, "#{self.class}#step_3_create_destination_stories",
+            :epics_array => epics_array
         )
         create_destination_epics_batch.jobs do
-            puts('empty?', epics_array)
             epics_array.each do |epic|
                 CreateDestinationEpicWorker.perform_async(epic)
             end
@@ -40,7 +40,30 @@ class InitializeClubhouseWorker < BaseClubhouseWorker
         end
     end
 
-    def step_3_final(status, options)
-        puts('ALL DONE')
+    def step_3_create_destination_stories(status, options)
+        template_epics_array = options["epics_array"]
+
+        create_destination_stories_batch = Sidekiq::Batch.new
+        create_destination_stories_batch.on(
+            :success, "#{self.class}#step_4_final"
+        )
+        create_destination_stories_batch.jobs do
+            template_epics_array.each do |epic|
+                epic_id = epic['id']
+                template_epic_stories = self.class.get("/epics/#{epic_id}/stories", :body=> {:token => CLUBHOUSE_TEMPLATE_API_TOKEN})
+                
+                template_epic_stories.each do |story|
+                    CreateDestinationStoryWorker.perform_async(story)
+                end
+            end
+
+            # Ensure batch has at least 1 job so callbacks are run. 
+            # Required to go to next step in case a project has no associated epics.
+            NullWorker.perform_async if template_epics_array.empty?
+        end
+    end
+
+    def step_4_final(status, options)
+        puts('DONE')
     end
 end
