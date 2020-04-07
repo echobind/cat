@@ -1,0 +1,30 @@
+.form-container {
+  border-width: 1px;
+  border-color: #797979;
+  background: white;
+  padding: 2rem;
+  width: 23rem;
+}
+
+.form-container h1 {
+  text-align: center;
+  font-weight: bold;
+}
+
+.form-control {
+  border-radius: 0;
+  border: none;
+  background-color: #e6e6e6;
+  color: #4b4747;
+
+  &::placeholder {
+    color: #a7a7a7;
+  }
+
+  &:focus {
+    outline: none !important;
+    border: 1px solid #a7a7a7;
+    box-shadow: none;
+    background-color: #e6e6e6;
+  }
+}

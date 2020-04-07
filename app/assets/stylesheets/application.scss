@@ -19,6 +19,5 @@
 @import 'font-awesome';
 
 // Our App Styles
-@import 'home';
-@import 'login';
-@import 'forms';
+@import 'globals/index';
+@import 'pages/index';

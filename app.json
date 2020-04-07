@@ -1,5 +1,5 @@
 {
-  "name": "Rails Template",
+  "name": "Clubhouse Automation Tool",
   "description": "A MVP ready rails app.",
   "repository": "https://github.com/TristanToye/rails-template",
   "image": "heroku/ruby",

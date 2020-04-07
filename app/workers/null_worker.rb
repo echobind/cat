@@ -1,5 +1,4 @@
-class NullWorker
-  include Sidekiq::Worker
+class NullWorker < BaseClubhouseWorker
   def perform
     # NOOP
   end
