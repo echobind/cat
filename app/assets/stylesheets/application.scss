@@ -13,10 +13,11 @@
  *= require_self
  */
 
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat:b');
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import 'bootstrap';
 @import 'font-awesome';
 
 // Our App Styles
-@import 'home';
-@import 'login';
+@import 'globals/index';
+@import 'pages/index';

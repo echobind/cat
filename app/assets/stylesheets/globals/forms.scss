@@ -1,10 +1,3 @@
-.page-login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
 .form-container {
   border-width: 1px;
   border-color: #797979;
@@ -15,13 +8,7 @@
 
 .form-container h1 {
   text-align: center;
-}
-
-.form-container .btn-primary {
-  width: 100%;
-  border-radius: 0;
-  background-color: #630555;
-  border-color: #630555;
+  font-weight: bold;
 }
 
 .form-control {
@@ -40,19 +27,4 @@
     box-shadow: none;
     background-color: #e6e6e6;
   }
-}
-
-.form-check-label,
-.forgot-password,
-.sign-up {
-  color: #a7a7a7;
-}
-
-.text-muted,
-.login-link {
-  color: #a7a7a7;
-}
-
-.my-link {
-  text-align: center;
 }

@@ -1,0 +1,23 @@
+.home-container {
+  border-width: 1px;
+  border-color: #797979;
+  background: white;
+  padding: 2rem;
+  width: 46rem;
+}
+
+.home-container h1 {
+  text-align: center;
+}
+
+.logout-container {
+  text-align: right;
+}
+
+.logout-button {
+  color: #797979;
+}
+
+.logout-button:hover {
+  color: #630555;
+}
