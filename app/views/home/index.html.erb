@@ -26,21 +26,26 @@
     <% end %>
   </div>
 
-  <div>
+<div>
     <h1>Clubhouse Projects</h1>
-    <%= form_tag clubhouse_initialize_clubhouse_setup_path do |f| %>
     <div class='row justify-content-center form-group'>
-      <% @template_projects.each do |item| %>
-        <div class='col-4'>
-        <%= check_box_tag "template_projects[#{item['id']}]", item['name'] %>
-        <%= label_tag("project #{item['id']}", item['name']) %>
-        </div>
+      <% if @template_projects.length < 2 %>       
+        <p>Clubhouse Projects <%= @template_projects %> </p>
+      <% else %> 
+      <%= form_tag clubhouse_initialize_clubhouse_setup_path do |f| %>
+        <div class='row justify-content-center form-group'>
+          <% @template_projects.each do |item| %>
+            <div class='col-4'>
+            <%= check_box_tag "template_projects[#{item['id']}]", item['name'] %>
+            <%= label_tag("project #{item['id']}", item['name']) %>
+            </div>
+          <% end %>
+          </div>
+          <div class='form-group'>
+          <%= submit_tag "Initiallize Clubhouse", class: 'btn btn-primary' %>
+          </div>
+        <% end %>
       <% end %>
-      </div>
-      <div class='form-group'>
-      <%= submit_tag "Initiallize Clubhouse", class: 'btn btn-primary' %>
-      </div>
-    <% end %>
   </div>
 </div>
 
