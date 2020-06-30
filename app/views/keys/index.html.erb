@@ -1,0 +1,56 @@
+<div class='page-container'>
+<div class='home-container'>
+  <div class='menu-container'>
+  <%= link_to root_url, class: 'logout-button', method: :delete do %>
+      <%= fa_icon "home 2x"%>
+  <% end %>
+  <%= link_to keys_path, class: 'logout-button' do %>
+      <%= fa_icon "key 2x"%>
+    <% end %>
+    <%= link_to destroy_user_session_path, class: 'logout-button', method: :delete do %>
+      <%= fa_icon "sign-out 2x"%>
+    <% end %>
+  </div>
+  <div>
+    <h1>Clubhouse API Keys</h1>
+    <h4>Template API Key</h4>
+    <% if !@current_user.template_clubhouse_api_token %>
+      <%= form_tag(keys_set_template_workspace_api_key_path, {class: "row"}) do |f| %>
+        <div class='form-group col-10'>
+          <%= text_field_tag(:template_workspace_api_key, nil, placeholder: 'Enter your template API token', class: 'form-control') %>
+        </div>
+        <div class='form-group col-2'>
+          <%= submit_tag "Save", class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    <% else %>
+      <%= form_tag(keys_delete_template_workspace_api_key_path, {class: "row"}) do |f| %>
+        <p class='col-10 form-para'>Template workspace API token set.</p>
+        <div class='form-group col-2'>
+        <%= submit_tag "Delete", class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div>
+    <h4>Destination API Key</h4>
+    <% if !@current_user.destination_clubhouse_api_token %>
+      <%= form_tag(keys_set_destination_workspace_api_key_path, {class: "row"}) do |f| %>
+        <div class='form-group col-10'>
+          <%= text_field_tag(:destination_workspace_api_key, nil, placeholder: 'Enter your destination API token', class: 'form-control') %>
+        </div>
+        <div class='form-group col-2'>
+          <%= submit_tag "Save", class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    <% else %>
+      <%= form_tag(keys_delete_destination_workspace_api_key_path, {class: "row"}) do |f| %>
+        <p class='col-10 form-para'>Template workspace API token set.</p>
+        <div class='form-group col-2'>
+        <%= submit_tag "Delete", class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

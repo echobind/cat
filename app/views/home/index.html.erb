@@ -1,32 +1,18 @@
 <div class='page-container'>
 <div class='home-container'>
-  <div class='logout-container'>
+  <div class='menu-container'>
+  <%= link_to root_url, class: 'logout-button', method: :delete do %>
+      <%= fa_icon "home 2x"%>
+  <% end %>
+  <%= link_to keys_path, class: 'logout-button' do %>
+      <%= fa_icon "key 2x"%>
+    <% end %>
     <%= link_to destroy_user_session_path, class: 'logout-button', method: :delete do %>
       <%= fa_icon "sign-out 2x"%>
     <% end %>
   </div>
-  <div>
-    <h1>Clubhouse API Token</h1>
-    <% if !@current_user.clubhouse_api_token %>
-      <%= form_tag clubhouse_set_destination_workspace_api_key_path do |f| %>
-        <div class='form-group'>
-          <%= text_field_tag(:destination_workspace_api_key, nil, placeholder: 'Enter your API token', class: 'form-control') %>
-        </div>
-        <div class='form-group'>
-          <%= submit_tag "Add Token", class: 'btn btn-primary' %>
-        </div>
-      <% end %>
-    <% else %>
-      <p>You already have an API token set. If you'd like to add a new one please delete your current token.</p>
-      <%= form_tag clubhouse_delete_destination_workspace_api_key_path do |f| %>
-        <div class='form-group'>
-        <%= submit_tag "Delete Token", class: 'btn btn-primary' %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
 
-<div>
+  <div>
     <h1>Clubhouse Projects</h1>
     <div class='row justify-content-center form-group'>
       <% if @template_projects.length < 2 %>       
@@ -46,7 +32,6 @@
           </div>
         <% end %>
       <% end %>
+    </div>
   </div>
-</div>
-
 </div>
