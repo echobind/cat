@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   get "home/index"
-  get "home/test"
+  match "/keys" => "keys#index", :via => "get"
   post "clubhouse/initialize_clubhouse_setup"
-  post "clubhouse/set_destination_workspace_api_key"
-  post "clubhouse/delete_destination_workspace_api_key"
+  post "keys/set_template_workspace_api_key"
+  post "keys/delete_template_workspace_api_key"
+  post "keys/set_destination_workspace_api_key"
+  post "keys/delete_destination_workspace_api_key"
   devise_for :users
   require "sidekiq/web"
   mount Sidekiq::Web => "/sidekiq"
